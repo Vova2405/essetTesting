@@ -1,61 +1,45 @@
+const wait = require('../pageobjects/waitUntil.page');
+const organizationInput = '[formcontrolname="name"]';
+const createButton = '[name="plus"]';
+const addButton = '//*[text()=" Add "]';
+const assetGroupButton = '//*[text()=" Asset Group (from template) "]';
+const capitalContainer = '//*[text()=" Capital works "]';
+const saveButton = '//*[text()=" Save "]';
+const exitButton = '//*[text()=" Exit "]';
+const organizationName = 'Home';
+
+
+
+
 class MainPage {
 
-    get organizationInput() {
-        return $('[formcontrolname="name"]')
-    }
-
-    async organisationNameValue() {
-        await this.organizationInput.addValue("home");
+    async setOrganisationNameValue() {
+        await wait.setValue(organizationInput, 'home')  //dont wokr with variable organizationName
     };
-    
-    get createButton() {
-        return $('[name="plus"]')
+
+    async clickCreateButton() {
+        await wait.click(createButton)
     }
 
-    async createButtonClick() {
-        await this.createButton.click()
+    async clickAddButton() {
+        await wait.click(addButton)
     }
 
-    get addButton() {
-        return $('//*[text()=" Add "]')
+    async clickAssetGroupButton() {
+        await wait.click(assetGroupButton)
     }
 
-    async addButtonClick() {
-        await this.addButton.click()
+    async clickCapitalButton() {
+        await wait.click(capitalContainer)
     }
 
-    get assetGroupButton() {
-        return $('//*[text()=" Asset Group (from template) "]')
+    async clickSaveButton() {
+        await wait.click(saveButton)
     }
 
-    async assetGroupButtonClick() {
-        await this.assetGroupButton.click()
+    async clickExitButton() {
+        await wait.click(exitButton)
     }
 
-    get capitalContainer() {
-        return $('//*[text()=" Capital works "]')
-    }
-
-    async capitalContainerClick() {
-        await this.capitalContainer.click()
-    }
-
-    get saveButton() {
-        return $('//*[text()=" Save "]')
-    }
-
-    async saveButtonClick() {
-        await this.saveButton.click()
-    }
-
-    get exitButton() {
-        return $('//*[text()=" Exit "]')
-    }
-
-    async exitButtonClick() {
-        await this.exitButton.click()
-    }
-
-    
 }
 module.exports = new MainPage();

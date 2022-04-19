@@ -1,67 +1,53 @@
+const wait = require('../pageobjects/waitUntil.page');
+const createAccountButton = `[class="btn btn-lg btn-block btn-tertiary bold text-dark Login-create"]`;
+const firstNameInput = '#FirstName';
+const lastNameInput = '#LastName';
+const emailInput = '#Email';
+const phoneNumberInput = '#PhoneNumber';
+const passwordInput = '#Password';
+const confirmPasswordInput = '#ConfirmPassword';
+const registerButton = '[name="button"]';
+const firstName = 'Volodymyr';
+const lastName = 'Volodymyriv';
+const emailValue = 'phenom2405_ulnwq@mailsac.com';
+const phoneNumberValue = '+3809712312311';
+const passwordValue = 'Password123';
+const confirmPasswordValue = 'Password123';
+
 class SignUpPage{
 
-    get createAccountButton() {
-        return $('[class="btn btn-lg btn-block btn-tertiary bold text-dark Login-create"]');
+   
+    async clickCreateAccountButton() {
+        await wait.click(createAccountButton)
     }
 
-    async createAccountButtonClick() {
-        await this.createAccountButton.click()
+    async setFirstNameValue() {
+        await wait.setValue(firstNameInput, firstName)
     }
 
-    get firstNameInput() {
-        return $('#FirstName')
+    async setLastNameValue() {
+        await wait.setValue(lastNameInput,lastName)
     }
 
-    async firstNameInputValue() {
-        await this.firstNameInput.addValue('Volodymyr')
+    async setEmailValue() {
+        await wait.setValue(emailInput, emailValue)
     }
 
-    get lastNameInput() {
-        return $('#LastName')
+    async setPhoneNumberValue() {
+        await wait.setValue(phoneNumberInput, phoneNumberValue)
     }
 
-    async lastNameInputValue() {
-        await this.lastNameInput.addValue('Volodymyriv')
+    async setPasswordValue() {
+        await wait.setValue(passwordInput, passwordValue)
     }
 
-    get emailInput() {
-        return $('#Email')
+    async setConfirmPasswordValue() {
+        await wait.setValue(confirmPasswordInput, confirmPasswordValue)
     }
 
-    async emailInputValue() {
-        await this.emailInput.addValue('phenom2405_0mtnh@mailsac.com')
-    }
 
-    get phoneNumberInput() {
-        return $('#PhoneNumber')
-    }
-
-    async phoneNumberInputValue() {
-        await this.phoneNumberInput.addValue('+3809312312323')
-    }
-
-    get passwordInput() {
-        return $('#Password')
-    }
-
-    async passwordInputValue() {
-        await this.passwordInput.addValue('Password123')
-    }
-
-    get confirmPasswordInput() {
-        return $('#ConfirmPassword')
-    }
-
-    async confirmPasswordValue() {
-        this.confirmPasswordInput.addValue('Password123')
-    }
-
-    get registerButton() {
-        return $('[name="button"]')
-    }
-
-    async registerButtonClick() {
-        await this.registerButton.click()
+    async clickRegisterButton() {
+        await wait.click(registerButton)
     }
 
 

@@ -1,82 +1,65 @@
+const wait = require('../pageobjects/waitUntil.page');
+const signUpPage = require('../pageobjects/signUp.page')
+const userNameInput = '[name="username"]';
+const userPasswordInput = '[name="password"]';
+const signInButton = '[ng-disabled="disableSubmission"]';
+const dropdownMenu = '[class="dropdown-toggle"]';
+const dashboardButton = '[href="/dashboard"]';
+const mailButton = `//*[text()="phenom2405_ulnwq@mailsac.com"]`; // dont know how to take it from signUpPage
+const message = '//strong[contains(text(), "info@assetaccountant.com.au") and @class]';
+const unblockButton = '//*[text()="Unblock links and images ↗"]';
+const verifyButton = '[href*="https://dev.auth.faktored.com/Account/Authentication/VerifyEmail?"]';
+const userNameValue = 'phenom2405@gmail.com';
+const passwordValue = 'Noone1234567890';
+
+
 class MailPage {
-
-    get userNameInput() {
-        return $('[name="username"]')
-    }
-    async userNameInputValue() {
-        await this.userNameInput.addValue('phenom2405@gmail.com')
-    }
-
-    get userPasswordInput() {
-        return $('[name="password"]')
-    }
-
-    async userPasswordInputValue() {
-        await this.userPasswordInput.addValue('Noone1234567890')
-    }
-
-    get signInButton() {
-        return $('[ng-disabled="disableSubmission"]')
-    }
-
-    async signInButtonClick() {
-        await this.signInButton.click()
-    }
-
-    get dropdownMenu() {
-        return $('[class="dropdown-toggle"]')
-    }
-
-    async dropdownMenuClick() {
-        await this.dropdownMenu.click()
-    }
-
-    get dashboardButton() {
-        return $('[href="/dashboard"]')
-    }
-
-    async dashboardButtonClick() {
-        await this.dashboardButton.click()
-    }
-
-
-
-    get mailButton() {
-        return $('//*[text()="phenom2405_0mtnh@mailsac.com"]')
-    }
-
-    async mailButtonClick() {
-        await this.mailButton.click()
-    }
-
-    get message() {
-        return $('//strong[contains(text(), "info@assetaccountant.com.au") and @class]')
-    }
-
-    async messageClick() {
-        await this.message.click()
-    }
-
     get unblockButton() {
-        return $('//*[text()="Unblock links and images ↗"]')
+        return $('//*[text()="Unblock links and images ↗"]')    //need for creating URL in Basic.js
     }
 
-    async unblockButtonClick() {
-        await this.unblockButton.click()
+    async setUserNameValue() {
+        await wait.setValue(userNameInput, userNameValue)
     }
 
-    async futureURL() {
-        await this.unblockButton.getAttribute('href')
+    async setPasswordValue() {
+        await wait.setValue(userPasswordInput, passwordValue)
+    }
+
+    async clickSignInButton() {
+        await wait.click(signInButton)
+    }
+
+    async clickDropdownButton() {
+        await wait.click(dropdownMenu)
+    }
+
+    async clickDashboardButton() {
+        await wait.click(dashboardButton)
+    }
+
+    async clickMailButton() {
+        await wait.click(mailButton)
+    }
+
+    async clickMessageButton() {
+        await wait.click(message)
+    }
+
+    async clickUnblockButton() {
+        await wait.click(unblockButton)
     }
 
 
-    get verifyButton() {
-        return $('[href*="https://dev.auth.faktored.com/Account/Authentication/VerifyEmail?"]')
+    async futureURLForVerify() {                       //dont working
+        await wait.futureURL(unblockButton, 'href')
     }
 
-    async verifyButtonClick() {
-        await this.verifyButton.click()
+    async clickVerifyButton() {
+        await wait.click(verifyButton)
     }
+
+
 
 }
 
